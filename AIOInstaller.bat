@@ -108,18 +108,25 @@ echo     - VC++ 2013 (x86/x64)
 echo     - VC++ 2015-2022 (x86/x64)
 echo.
 
-start /wait winget install --id Microsoft.VCRedist.2005.x86 --silent --accept-package-agreements --accept-source-agreements
-start /wait winget install --id Microsoft.VCRedist.2005.x64 --silent --accept-package-agreements --accept-source-agreements
-start /wait winget install --id Microsoft.VCRedist.2008.x86 --silent --accept-package-agreements --accept-source-agreements
-start /wait winget install --id Microsoft.VCRedist.2008.x64 --silent --accept-package-agreements --accept-source-agreements
-start /wait winget install --id Microsoft.VCRedist.2010.x86 --silent --accept-package-agreements --accept-source-agreements
-start /wait winget install --id Microsoft.VCRedist.2010.x64 --silent --accept-package-agreements --accept-source-agreements
-start /wait winget install --id Microsoft.VCRedist.2012.x86 --silent --accept-package-agreements --accept-source-agreements
-start /wait winget install --id Microsoft.VCRedist.2012.x64 --silent --accept-package-agreements --accept-source-agreements
-start /wait winget install --id Microsoft.VCRedist.2013.x86 --silent --accept-package-agreements --accept-source-agreements
-start /wait winget install --id Microsoft.VCRedist.2013.x64 --silent --accept-package-agreements --accept-source-agreements
-start /wait winget install --id Microsoft.VCRedist.2015+.x86 --silent --accept-package-agreements --accept-source-agreements
-start /wait winget install --id Microsoft.VCRedist.2015+.x64 --silent --accept-package-agreements --accept-source-agreements
+powershell -WindowStyle Hidden -Command "& {
+    $packages = @(
+        'Microsoft.VCRedist.2005.x86',
+        'Microsoft.VCRedist.2005.x64',
+        'Microsoft.VCRedist.2008.x86',
+        'Microsoft.VCRedist.2008.x64',
+        'Microsoft.VCRedist.2010.x86',
+        'Microsoft.VCRedist.2010.x64',
+        'Microsoft.VCRedist.2012.x86',
+        'Microsoft.VCRedist.2012.x64',
+        'Microsoft.VCRedist.2013.x86',
+        'Microsoft.VCRedist.2013.x64',
+        'Microsoft.VCRedist.2015+.x86',
+        'Microsoft.VCRedist.2015+.x64'
+    )
+    foreach ($pkg in $packages) {
+        Start-Process -FilePath 'winget' -ArgumentList 'install', '--id', $pkg, '--silent', '--accept-package-agreements', '--accept-source-agreements' -WindowStyle Hidden -Wait
+    }
+}"
 
 echo [+] Visual C++ Redistributables installation completed
 echo.
@@ -133,10 +140,17 @@ echo     - .NET 7.0 Runtime
 echo     - .NET 8.0 Runtime
 echo.
 
-start /wait winget install --id Microsoft.DotNet.Framework.DeveloperPack_4 --silent --accept-package-agreements --accept-source-agreements
-start /wait winget install --id Microsoft.DotNet.Runtime.6 --silent --accept-package-agreements --accept-source-agreements
-start /wait winget install --id Microsoft.DotNet.Runtime.7 --silent --accept-package-agreements --accept-source-agreements
-start /wait winget install --id Microsoft.DotNet.Runtime.8 --silent --accept-package-agreements --accept-source-agreements
+powershell -WindowStyle Hidden -Command "& {
+    $packages = @(
+        'Microsoft.DotNet.Framework.DeveloperPack_4',
+        'Microsoft.DotNet.Runtime.6',
+        'Microsoft.DotNet.Runtime.7',
+        'Microsoft.DotNet.Runtime.8'
+    )
+    foreach ($pkg in $packages) {
+        Start-Process -FilePath 'winget' -ArgumentList 'install', '--id', $pkg, '--silent', '--accept-package-agreements', '--accept-source-agreements' -WindowStyle Hidden -Wait
+    }
+}"
 
 echo [+] .NET installation completed
 echo.
@@ -148,19 +162,19 @@ echo.
 
 REM DirectX End-User Runtime
 echo [#] Installing DirectX End-User Runtime...
-start /wait winget install --id Microsoft.DirectX --silent --accept-package-agreements --accept-source-agreements
+powershell -WindowStyle Hidden -Command "Start-Process -FilePath 'winget' -ArgumentList 'install', '--id', 'Microsoft.DirectX', '--silent', '--accept-package-agreements', '--accept-source-agreements' -WindowStyle Hidden -Wait"
 echo [+] DirectX installation completed
 echo.
 
 REM Vulkan Runtime
 echo [#] Installing Vulkan Runtime...
-start /wait winget install --id KhronosGroup.VulkanRuntime --silent --accept-package-agreements --accept-source-agreements
+powershell -WindowStyle Hidden -Command "Start-Process -FilePath 'winget' -ArgumentList 'install', '--id', 'KhronosGroup.VulkanRuntime', '--silent', '--accept-package-agreements', '--accept-source-agreements' -WindowStyle Hidden -Wait"
 echo [+] Vulkan Runtime installation completed
 echo.
 
 REM XNA Framework
 echo [#] Installing XNA Framework 4.0...
-start /wait winget install --id Microsoft.XNAFramework --silent --accept-package-agreements --accept-source-agreements
+powershell -WindowStyle Hidden -Command "Start-Process -FilePath 'winget' -ArgumentList 'install', '--id', 'Microsoft.XNAFramework', '--silent', '--accept-package-agreements', '--accept-source-agreements' -WindowStyle Hidden -Wait"
 echo [+] XNA Framework installation completed
 echo.
 
@@ -171,13 +185,13 @@ echo.
 
 REM OpenAL
 echo [#] Installing OpenAL...
-start /wait winget install --id OpenAL.OpenAL --silent --accept-package-agreements --accept-source-agreements
+powershell -WindowStyle Hidden -Command "Start-Process -FilePath 'winget' -ArgumentList 'install', '--id', 'OpenAL.OpenAL', '--silent', '--accept-package-agreements', '--accept-source-agreements' -WindowStyle Hidden -Wait"
 echo [+] OpenAL installation completed
 echo.
 
 REM NVIDIA PhysX (Legacy and Current)
 echo [#] Installing NVIDIA PhysX...
-start /wait winget install --id Nvidia.PhysX --silent --accept-package-agreements --accept-source-agreements
+powershell -WindowStyle Hidden -Command "Start-Process -FilePath 'winget' -ArgumentList 'install', '--id', 'Nvidia.PhysX', '--silent', '--accept-package-agreements', '--accept-source-agreements' -WindowStyle Hidden -Wait"
 echo [+] PhysX installation completed
 echo.
 
@@ -188,19 +202,19 @@ echo.
 
 REM Java Runtime Environment
 echo [#] Installing Java Runtime Environment...
-start /wait winget install --id Oracle.JavaRuntimeEnvironment --silent --accept-package-agreements --accept-source-agreements
+powershell -WindowStyle Hidden -Command "Start-Process -FilePath 'winget' -ArgumentList 'install', '--id', 'Oracle.JavaRuntimeEnvironment', '--silent', '--accept-package-agreements', '--accept-source-agreements' -WindowStyle Hidden -Wait"
 echo [+] Java Runtime installation completed
 echo.
 
 REM Python Runtime
 echo [#] Installing Python Runtime...
-start /wait winget install --id Python.Python.3.12 --silent --accept-package-agreements --accept-source-agreements
+powershell -WindowStyle Hidden -Command "Start-Process -FilePath 'winget' -ArgumentList 'install', '--id', 'Python.Python.3.12', '--silent', '--accept-package-agreements', '--accept-source-agreements' -WindowStyle Hidden -Wait"
 echo [+] Python Runtime installation completed
 echo.
 
 REM WineVDM (OTVDM) for DOS/16-bit compatibility
 echo [#] Installing WineVDM (OTVDM) for DOS/16-bit support...
-start /wait winget install --id otya128.OTVDM --silent --accept-package-agreements --accept-source-agreements
+powershell -WindowStyle Hidden -Command "Start-Process -FilePath 'winget' -ArgumentList 'install', '--id', 'otya128.OTVDM', '--silent', '--accept-package-agreements', '--accept-source-agreements' -WindowStyle Hidden -Wait"
 echo [+] WineVDM (OTVDM) installation completed
 echo.
 
@@ -211,19 +225,19 @@ echo.
 
 REM PowerShell 7
 echo [#] Installing PowerShell 7...
-start /wait winget install --id Microsoft.PowerShell --silent --accept-package-agreements --accept-source-agreements
+powershell -WindowStyle Hidden -Command "Start-Process -FilePath 'winget' -ArgumentList 'install', '--id', 'Microsoft.PowerShell', '--silent', '--accept-package-agreements', '--accept-source-agreements' -WindowStyle Hidden -Wait"
 echo [+] PowerShell 7 installation completed
 echo.
 
 REM Windows Terminal
 echo [#] Installing Windows Terminal...
-start /wait winget install --id Microsoft.WindowsTerminal --silent --accept-package-agreements --accept-source-agreements
+powershell -WindowStyle Hidden -Command "Start-Process -FilePath 'winget' -ArgumentList 'install', '--id', 'Microsoft.WindowsTerminal', '--silent', '--accept-package-agreements', '--accept-source-agreements' -WindowStyle Hidden -Wait"
 echo [+] Windows Terminal installation completed
 echo.
 
 REM NanaZip (Modern 7-Zip replacement)
 echo [#] Installing NanaZip...
-start /wait winget install --id M2Team.NanaZip --silent --accept-package-agreements --accept-source-agreements
+powershell -WindowStyle Hidden -Command "Start-Process -FilePath 'winget' -ArgumentList 'install', '--id', 'M2Team.NanaZip', '--silent', '--accept-package-agreements', '--accept-source-agreements' -WindowStyle Hidden -Wait"
 echo [+] NanaZip installation completed
 echo.
 
