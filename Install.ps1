@@ -124,7 +124,16 @@ if (!(Test-CommandExists -command 'winget')) {
 Write-Host "✓ WinGet is available. Starting package installation..." -ForegroundColor Green
 
 # Gaming redistributables to install
+# Comprehensive package list covering:
+# - Visual C++ 2005-2022 (x86/x64/ARM64) for broad game compatibility
+# - .NET Framework 4 + .NET 3.1-10 (all variants) for modern applications
+# - DirectX, Vulkan, XNA for graphics APIs
+# - OpenAL, PhysX for audio/physics engines  
+# - Java 8/17/21 for Minecraft and Java-based games
+# - Python, PowerShell, Terminal for development tools
+# - NanaZip for archive support, WineVDM for 16-bit compatibility
 $packages = @(
+	# Visual C++ Redistributables (all versions, all architectures)
 	"Microsoft.VCRedist.2005.x64",
 	"Microsoft.VCRedist.2005.x86",
 	"Microsoft.VCRedist.2008.x64",
@@ -137,20 +146,61 @@ $packages = @(
 	"Microsoft.VCRedist.2013.x86",
 	"Microsoft.VCRedist.2015+.x64",
 	"Microsoft.VCRedist.2015+.x86",
+	"Microsoft.VCRedist.2015+.arm64",
+	
+	# .NET Framework
 	"Microsoft.DotNet.Framework.DeveloperPack_4",
+	
+	# .NET Core/5+ Runtimes (all stable versions)
+	"Microsoft.DotNet.Runtime.3_1",
+	"Microsoft.DotNet.Runtime.5",
 	"Microsoft.DotNet.Runtime.6",
 	"Microsoft.DotNet.Runtime.7",
 	"Microsoft.DotNet.Runtime.8",
+	"Microsoft.DotNet.Runtime.9",
+	"Microsoft.DotNet.Runtime.Preview",
+	
+	# .NET Desktop Runtimes (for WPF/WinForms apps)
+	"Microsoft.DotNet.DesktopRuntime.3_1",
+	"Microsoft.DotNet.DesktopRuntime.5",
+	"Microsoft.DotNet.DesktopRuntime.6",
+	"Microsoft.DotNet.DesktopRuntime.7",
+	"Microsoft.DotNet.DesktopRuntime.8",
+	"Microsoft.DotNet.DesktopRuntime.9",
+	"Microsoft.DotNet.DesktopRuntime.Preview",
+	
+	# ASP.NET Core Runtimes (for web apps)
+	"Microsoft.DotNet.AspNetCore.3_1",
+	"Microsoft.DotNet.AspNetCore.5",
+	"Microsoft.DotNet.AspNetCore.6",
+	"Microsoft.DotNet.AspNetCore.7",
+	"Microsoft.DotNet.AspNetCore.8",
+	"Microsoft.DotNet.AspNetCore.9",
+	"Microsoft.DotNet.AspNetCore.Preview",
+	
+	# Graphics and Gaming APIs
 	"Microsoft.DirectX",
 	"KhronosGroup.VulkanRT",
-	"Microsoft.XNA.Framework.Redist",
+	"Microsoft.XNARedist",
+	
+	# Audio and Physics
 	"OpenAL.OpenAL",
 	"NVIDIA.PhysX",
-	"Oracle.JavaRuntimeEnvironment",
+	
+	# Java Runtimes (Minecraft & Gaming Compatible)
+	"EclipseAdoptium.Temurin.8.JRE",      # Java 8 - Required for older Minecraft (1.6.4-1.16.5) and legacy games
+	"EclipseAdoptium.Temurin.17.JRE",     # Java 17 LTS - Required for Minecraft 1.18-1.20.x
+	"EclipseAdoptium.Temurin.21.JRE",     # Java 21 LTS - Latest Minecraft versions and modern games
+	"Oracle.JavaRuntimeEnvironment",      # Oracle Java 8 - Some older games specifically require Oracle JRE
+	
+	# Development Tools and Utilities
 	"Python.Python.3.12",
 	"Microsoft.PowerShell",
 	"Microsoft.WindowsTerminal",
-	"M2Team.NanaZip"
+	"M2Team.NanaZip",
+	
+	# Legacy compatibility
+	"otya128.winevdm"
 )
 
 $successCount = 0
