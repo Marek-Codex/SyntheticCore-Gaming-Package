@@ -1,2 +1,56 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# SyntheticCore Gaming Package - Git Attributes
+# Ensures proper line endings and file handling for Windows-centric project
+
+# Text files - Windows line endings (CRLF) for compatibility
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+*.md text eol=crlf
+*.txt text eol=crlf
+*.xml text eol=crlf
+*.json text eol=crlf
+*.yml text eol=crlf
+*.yaml text eol=crlf
+
+# Scripts and configuration
+*.gitignore text eol=lf
+*.gitattributes text eol=lf
+
+# Binary files (if any are added later)
+*.exe binary
+*.msi binary
+*.msix binary
+*.msixbundle binary
+*.appx binary
+*.dll binary
+*.sys binary
+
+# Archive files
+*.zip binary
+*.7z binary
+*.rar binary
+*.tar binary
+*.gz binary
+
+# Images (if logos/screenshots are added)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text
+
+# Documentation export files
+*.pdf binary
+*.doc binary
+*.docx binary
+
+# Linguist overrides for GitHub language detection
+*.bat linguist-language=Batch
+*.ps1 linguist-language=PowerShell
+README.md linguist-documentation
+*.md linguist-documentation
+
+# Git LFS tracking (if large files are added later)
+# *.msixbundle filter=lfs diff=lfs merge=lfs -text
+# *.msi filter=lfs diff=lfs merge=lfs -text

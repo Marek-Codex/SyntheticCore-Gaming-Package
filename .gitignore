@@ -1,0 +1,115 @@
+# SyntheticCore Gaming Package - Git Ignore
+# Excludes temporary files, logs, and system-specific items
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.cache
+*~
+
+# PowerShell specific
+*.ps1xml
+
+# VS Code workspace settings (keep .vscode/ if you want shared settings)
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Notepad++
+*.bak
+
+# System/IDE generated files
+.DS_Store
+.directory
+*.swp
+*.swo
+
+# Test outputs and temporary installations
+test-output/
+temp-install/
+downloads/
+cache/
+
+# Local configuration overrides
+local-config.*
+.env
+.env.local
+
+# Build artifacts (if any)
+build/
+dist/
+out/
+
+# Package manager downloads (WinGet cache, etc.)
+winget-cache/
+packages-cache/
+
+# User-specific test files
+*-test.bat
+*-debug.ps1
+test-*.bat
+debug-*.ps1
+
+# Backup files
+*.backup
+*.bak
+*-backup.*
+
+# Archive files that shouldn't be tracked
+*.zip
+*.7z
+*.rar
+*.tar.gz
+
+# Large redistributable bundles (use Git LFS instead)
+*.msixbundle
+# Uncomment if you add large files:
+# *.exe
+# *.msi
+
+# Node.js (if any tooling is added)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (if any tooling is added)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+
+# Keep important files
+!README.md
+!LICENSE
+!*.bat
+!*.ps1
+!*.md
+!.gitattributes
+!.gitignore
