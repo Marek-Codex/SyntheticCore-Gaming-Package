@@ -125,7 +125,7 @@ Write-Host "✓ WinGet is available. Starting package installation..." -Foregrou
 
 # Gaming redistributables to install
 # Comprehensive package list covering:
-# - Visual C++ 2005-2022 (x86/x64/ARM64) for broad game compatibility
+# - Visual C++ 2005-2022 (x86/x64) for broad game compatibility
 # - .NET Framework 4 + .NET 3.1-10 (all variants) for modern applications
 # - DirectX, Vulkan, XNA for graphics APIs
 # - OpenAL, PhysX for audio/physics engines  
@@ -146,7 +146,6 @@ $packages = @(
 	"Microsoft.VCRedist.2013.x86",
 	"Microsoft.VCRedist.2015+.x64",
 	"Microsoft.VCRedist.2015+.x86",
-	"Microsoft.VCRedist.2015+.arm64",
 	
 	# .NET Framework
 	"Microsoft.DotNet.Framework.DeveloperPack_4",
